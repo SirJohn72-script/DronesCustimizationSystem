@@ -1,21 +1,34 @@
-import { useEffect, useRef } from "react";
-import { ContainerScene } from "./Scene.elements";
-import { cleanUpScene, initScene } from "./Script";
+import { useEffect, useRef } from "react"
+import { ContainerScene } from "./Scene.elements"
+import {
+  cleanUpScene,
+  initScene,
+  loadGroups,
+  loadModels,
+} from "./Script"
 
 const Scene = () => {
-  const mountRef = useRef(null);
+  const mountRef = useRef(null)
 
   useEffect(() => {
-    initScene(mountRef);
+    initScene(mountRef)
+    loadGroups()
+    loadModels("./model/base/Base.gltf", "base")
+    loadModels("./model/motor/Motor1.gltf", "motor")
+    loadModels("./model/cam/Cam1.gltf", "camaras")
+    loadModels("./model/helices/Helice1.gltf", "helices")
 
     return () => {
-      cleanUpScene();
-    };
-  }, []);
+      cleanUpScene()
+    }
+  }, [])
 
   return (
-    <ContainerScene className='SceneContainer' ref={mountRef}></ContainerScene>
-  );
-};
+    <ContainerScene
+      className="SceneContainer"
+      ref={mountRef}
+    ></ContainerScene>
+  )
+}
 
-export default Scene;
+export default Scene
