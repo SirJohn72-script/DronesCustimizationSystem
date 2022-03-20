@@ -1,6 +1,12 @@
-# Plantilla para usar Three.js con React 
-Sientete libre de usar esta plantilla c: 
+# Sistema de personalización de Drones en 3D 
+![Drones App Cover](public/hqdefault.jpg)
+Este repositorio contiene un sistema de personalización de drones 3D, donde es posible intercambiar diferentes piezas del Drone(Motores, Hélices, y Cámaras)
 
-## Instalacion 
-No te olvides de ejecutar el comando $ npm install , una vez hayas descargado el proyecto c: 
+PD: Posible incompatibilidad con dispositivos de Apple
+
+## Tecnologías
+- Blender
+- React
+- JS
+- Three.js (Vanilla)
 
