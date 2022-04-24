@@ -10,17 +10,17 @@ import "./Style.css"
 
 const motors = [
   {
-    name: "Motor1",
+    name: "Motor 1",
     group: "motor",
     rute: "./model/motor/Motor1.gltf",
   },
   {
-    name: "Motor2",
+    name: "Motor 2",
     group: "motor",
     rute: "./model/motor/Motor2.gltf",
   },
   {
-    name: "Motor3",
+    name: "Motor 3",
     group: "motor",
     rute: "./model/motor/Motor3.gltf",
   },
@@ -28,17 +28,17 @@ const motors = [
 
 const camaras = [
   {
-    name: "Camara1",
+    name: "Camera 1",
     group: "camaras",
     rute: "./model/cam/Cam1.gltf",
   },
   {
-    name: "Camara2",
+    name: "Camera 2",
     group: "camaras",
     rute: "./model/cam/Cam2.gltf",
   },
   {
-    name: "Camara3",
+    name: "Camera 3",
     group: "camaras",
     rute: "./model/cam/Cam3.gltf",
   },
@@ -46,17 +46,17 @@ const camaras = [
 
 const helices = [
   {
-    name: "Helice1",
+    name: "Propeller 1",
     group: "helices",
     rute: "./model/helices/Helice1.gltf",
   },
   {
-    name: "Helice2",
+    name: "Propeller 2",
     group: "helices",
     rute: "./model/helices/Helice2.gltf",
   },
   {
-    name: "Helice3",
+    name: "Propeller 3",
     group: "helices",
     rute: "./model/helices/Helice3.gltf",
   },
@@ -137,7 +137,7 @@ const Menu = () => {
               </select>
             </li>
             <li>
-              <label htmlFor="Helices">Helices</label>
+              <label htmlFor="Helices">Propellers</label>
               <select
                 className="Helices"
                 onClick={() => {
@@ -190,7 +190,7 @@ const Menu = () => {
 
           <div className="VistaGeneral">
             <button onClick={() => resetAnimation()}>
-              Vista General
+              General View
             </button>
           </div>
         </div>

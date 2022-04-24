@@ -42,7 +42,7 @@ renderer.outputEncoding = THREE.sRGBEncoding
 renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFShadowMap
 renderer.physicallyCorrectLights = true
-renderer.toneMapping = THREE.ACESFilmicToneMapping
+renderer.toneMapping = THREE.ReinhardToneMapping
 renderer.toneMappingExposure = 1.5
 renderer.setPixelRatio(2)
 
@@ -52,6 +52,8 @@ const orbitControls = new OrbitControls(
   renderer.domElement
 )
 orbitControls.enableDamping = true
+orbitControls.maxPolarAngle = Math.PI * 0.55
+orbitControls.minPolarAngle = Math.PI * 0.2
 
 //Resize canvas
 const resize = () => {
@@ -151,6 +153,16 @@ export const initScene = (mountRef) => {
 //Dismount and clena up the buffer from the scene
 export const cleanUpScene = () => {
   gui.destroy()
+  scene.traverse((child) => {
+    try {
+      if (child instanceof THREE.Mesh) {
+        child.geomtry.dispose()
+        child.material.dispose()
+      } else {
+        child.dispose()
+      }
+    } catch (error) {}
+  })
   scene.dispose()
   currentRef.removeChild(renderer.domElement)
 }
@@ -193,15 +205,17 @@ export const removeOldModels = (rute, group) => {
     }
   })
 
-  console.log(renderer.info)
-
   loadModels(rute, group)
 }
 
-//Debuggeo
+//Debuggeo ------------
 const cubeForDebugging = new THREE.Mesh(
   new THREE.BoxBufferGeometry(0.1, 0.1, 0.1),
-  new THREE.MeshBasicMaterial({ color: 0xff0000 })
+  new THREE.MeshBasicMaterial({
+    color: 0xff0000,
+    transparent: true,
+    opacity: 0.2,
+  })
 )
 
 scene.add(cubeForDebugging)
