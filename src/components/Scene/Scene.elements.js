@@ -10,3 +10,24 @@ export const ContainerScene = styled.div`
     rgba(49, 71, 85, 1) 100%
   );
 `
+export const LinkToPortfolio = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 0.5rem;
+  transform: translateX(-50%);
+
+  color: white;
+  font-size: 1rem;
+  font-family: sans-serif;
+
+  a {
+    margin-left: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-style: bold;
+    font-weight: 700;
+  }
+`

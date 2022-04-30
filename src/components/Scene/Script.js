@@ -13,7 +13,11 @@ const timeline = new gsap.timeline({
 })
 
 //Controls
-const gui = new dat.GUI({ width: 600 })
+const gui = new dat.GUI({
+  width: 600,
+  load: false,
+  closed: true,
+})
 
 //Drone parts
 const droneParts = {
@@ -32,6 +36,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 )
+
 scene.add(camera)
 camera.position.set(-7, 5, 10)
 camera.lookAt(new THREE.Vector3())
@@ -42,11 +47,11 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(100, 100)
 renderer.outputEncoding = THREE.sRGBEncoding
-renderer.shadowMap.enabled = false
+renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFShadowMap
 renderer.physicallyCorrectLights = true
 renderer.toneMapping = THREE.ReinhardToneMapping
-renderer.toneMappingExposure = 1.5
+renderer.toneMappingExposure = 3.5
 renderer.setPixelRatio(2)
 
 //OrbitControls
@@ -120,6 +125,8 @@ const animate = () => {
     }
   } catch (error) {}
   orbitControls.update()
+
+  //post processing render
   renderer.render(scene, camera)
   requestAnimationFrame(animate)
 }
