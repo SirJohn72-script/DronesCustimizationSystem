@@ -25,7 +25,7 @@ const droneParts = {
 
 //Scene, camera, renderer
 const scene = new THREE.Scene()
-scene.background = new THREE.Color(0x393939)
+scene.background = null
 const camera = new THREE.PerspectiveCamera(
   25,
   100 / 100,
@@ -36,10 +36,13 @@ scene.add(camera)
 camera.position.set(-7, 5, 10)
 camera.lookAt(new THREE.Vector3())
 
-const renderer = new THREE.WebGLRenderer()
+const renderer = new THREE.WebGLRenderer({
+  alpha: true,
+  antialias: true,
+})
 renderer.setSize(100, 100)
 renderer.outputEncoding = THREE.sRGBEncoding
-renderer.shadowMap.enabled = true
+renderer.shadowMap.enabled = false
 renderer.shadowMap.type = THREE.PCFShadowMap
 renderer.physicallyCorrectLights = true
 renderer.toneMapping = THREE.ReinhardToneMapping
@@ -214,7 +217,7 @@ const cubeForDebugging = new THREE.Mesh(
   new THREE.MeshBasicMaterial({
     color: 0xff0000,
     transparent: true,
-    opacity: 0.2,
+    opacity: 0.0,
   })
 )
 
